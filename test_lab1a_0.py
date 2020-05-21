@@ -3,6 +3,7 @@ import sqlite3
 import os
 from execute_sql_query import DATABASE_NAME
 
+
 def test_existDB():
     """существует ли БД"""
 
@@ -36,14 +37,34 @@ def test_column_names():
 
 
 def test_type_column():
-    """содержит ли таблица нужные поля"""
-    COLUMN_TYPE = [
-        (0, 'id', 'INT unsigned', 1, None, 0),
-        (1, 'name', 'varchar(20)', 1, None, 0),
+    """проверка имена столбцов и их типы (описание) """
+
+    COLUMN_TYPE = [  # правильное описание столбцов
+        # SQL: PRAGMA table_info(имя_таблицы)
+        (0, 'id', 'INT UNSIGNED', 1, None, 0),
+        (1, 'name', 'VARCHAR(20)', 1, None, 0),
         (2, 'birthday', 'DATETIME', 1, None, 0),
-        (3, 'sex', 'varchar(1)', 1, None, 0),
+        (3, 'sex', 'VARCHAR(1)', 1, None, 0),
         (4, 'active', 'BOOL', 0, 'FALSE', 0),
-        (5, 'salary', 'mediumint unsigned', 1, None, 0),
+        (5, 'salary', 'MEDIUMINT UNSIGNED', 1, None, 0),
     ]
-    # не доделал
-    assert True
+    conn = sqlite3.connect(DATABASE_NAME)
+    flag = True
+    res = conn.execute('PRAGMA table_info(employees)')
+    for i, column in enumerate(res):
+
+        description_column = list(column)  # преобразование строк в верхний регистр
+        for i1, elem in enumerate(description_column):
+            if type(elem) == str:
+                description_column[i1] = description_column[i1].upper()
+
+        correct_description_column = list(COLUMN_TYPE[i])  # преобразование строк в верхний регистр
+        for i2, elem in enumerate(correct_description_column):
+            if type(elem) == str:
+                correct_description_column[i2] = correct_description_column[i2].upper()
+
+        if description_column != correct_description_column:
+            flag = False
+            break
+    conn.close()
+    assert flag == True
