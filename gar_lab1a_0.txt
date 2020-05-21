@@ -1,0 +1,10 @@
+-- пример
+-- p.s.  это правильный запрос sql
+create table employees (
+    id INT unsigned not null,
+    name VARCHAR(20) not null,
+    birthday DATETIME not NULL,
+    sex VARCHAR(1) not NULL,
+    active BOOL default FALSE,
+    salary mediumint unsigned not null
+);
