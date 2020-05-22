@@ -1,5 +1,4 @@
--- пример
--- p.s.  это правильный запрос sql
+-- правильный запрос 0 варианта lab1a
 create table employees (
     id INT unsigned not null,
     name VARCHAR(20) not null,
