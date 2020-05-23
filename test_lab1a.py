@@ -4,14 +4,17 @@ import os
 
 NAME_PARAMETERS_FILE = 'parameters.txt'
 
-parameters_file = open(NAME_PARAMETERS_FILE,'r')
-parameters = dict([ line.strip().split('=') for line in parameters_file.readlines() ])
+parameters_file = open(NAME_PARAMETERS_FILE, 'r')
+parameters = dict([line.strip().split('=') for line in parameters_file.readlines()])
 
-command_import_test = 'from tests.variants_{WORK}.variant_{VARIANT} import DATABASE_NAME, NAME_TABLE, COLUMN_TYPE'.format(WORK=parameters['WORK'],VARIANT=parameters['VARIANT'])
+command_import_test = \
+    'from variants.variants_{WORK}.variant_{VARIANT} import DATABASE_NAME, NAME_TABLE, COLUMN_TYPE'.format(\
+        WORK=parameters['WORK'], VARIANT=parameters['VARIANT'])
 exec(command_import_test)
 
+
 def test_existDB():
-    """существует ли БД"""
+    """удалось ли создать БД"""
 
     global DATABASE_NAME
     flag = True
@@ -22,7 +25,7 @@ def test_existDB():
 
 
 def test_existNamedTable():
-    """существует ли таблица(ы) с нужным именем"""
+    """существует ли таблица(ы) с нужными именами"""
 
     global NAME_TABLE
     global DATABASE_NAME
@@ -39,21 +42,8 @@ def test_existNamedTable():
     assert flag
 
 
-# def test_column_names():
-#     """таблица содержит нужные столбцы в нужном порядке"""
-#
-#     global NAME_COLUMNS
-#     global DATABASE_NAME
-#     global NAME_TABLE
-#     conn = sqlite3.connect(DATABASE_NAME)
-#     res = conn.execute("select * from {}".format(NAME_TABLE))
-#     name_columns = list(map(lambda x: x[0], res.description))
-#     conn.close()
-#     assert name_columns == NAME_COLUMNS
-
-
 def test_type_column():
-    """проверка имена столбцов и их типы (описание) """
+    """проверка имена и типов созданных столбцов в каждой таблицу"""
 
     global COLUMN_TYPE
     global DATABASE_NAME

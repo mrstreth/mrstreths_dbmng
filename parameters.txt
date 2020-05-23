@@ -1,5 +1,0 @@
-WORK_FILE_NAME=gar_lab1a_1.txt
-AUTHOR=gar
-WORK=lab1a
-VARIANT=1
-DATABASE_NAME=mydatabase.db

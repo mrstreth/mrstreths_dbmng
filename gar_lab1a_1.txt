@@ -1,4 +1,4 @@
--- правильный запрос 1 варианта lab1a
+-- запрос студента
 create table employees (
     full_name  varchar(50) not null,
     position varchar(30) not null,
