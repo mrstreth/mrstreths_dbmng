@@ -1,0 +1,6 @@
+WORK_FILE_NAME=gar_lab1b_0.py
+AUTHOR=gar
+WORK=lab1b
+VARIANT=0
+DATABASE_NAME=mydatabase.db
+IS_SCRIPT=True
