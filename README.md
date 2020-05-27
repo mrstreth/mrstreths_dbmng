@@ -1,4 +1,4 @@
-# mrstreths_dbmng
+# dbmng
 
 Для отправки и проверки работ dbmng
 
