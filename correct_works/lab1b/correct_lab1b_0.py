@@ -1,9 +1,6 @@
-# это работа студента
-
-# здесь самое главное это описание класса таблиц
-
-# мы извлекаем только эту информацию
-
+# вариант 0
+# lab1b
+# это правильная выполненая работа
 from peewee import *
 
 DATABASE_NAME = 'mydatabase.db'
@@ -14,9 +11,9 @@ db = SqliteDatabase(DATABASE_NAME)
 class employees(Model):  # таблица "employees"
     id = IntegerField()
     name = TextField()
-    birthday = DateTimeField(null=True) #  пусть здесь он забыл резрешить Null
+    birthday = DateTimeField(null=True)
     sex = TextField()
-    active = BooleanField(null=True, default=False)
+    active = BooleanField(default=False)
     salary = IntegerField()
 
     class Meta:

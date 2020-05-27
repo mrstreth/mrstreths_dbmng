@@ -1,0 +1,24 @@
+--- ВАРИАНТ 3 - Строительная компания 
+CREATE TABLE "employee_data" (
+	"id"	INTEGER NOT NULL,
+	"name_employee"	TEXT NOT NULL,
+	"citizenship"	TEXT,
+	"end_permission"	DATETIME,
+	"position"	TEXT,
+	"tariff_rate"	REAL
+);
+CREATE TABLE "construction_objects" (
+	"id"	INTEGER NOT NULL,
+	"name_object"	TEXT,
+	"city"	TEXT,
+	"type_financing"	TEXT,
+	"start_date"	DATETIME,
+	"deadline"	DATETIME
+);
+CREATE TABLE "work_data" (
+	"id"	INTEGER NOT NULL,
+	"name_work"	TEXT NOT NULL,
+	"work_description"	TEXT,
+	"name_employee"	TEXT NOT NULL,
+	"number_hours"	INTEGER
+);

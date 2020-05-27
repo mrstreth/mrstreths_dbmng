@@ -1,0 +1,17 @@
+--- ВАРИАНТ 2 - Гос.дума 
+CREATE TABLE "employee_data" (
+	"id"	INTEGER NOT NULL,
+	"name"	TEXT NOT NULL,
+	"data_revenue"	REAL,
+	"data_estate"	TEXT
+);
+CREATE TABLE "data_laws" (
+	"id"	INTEGER NOT NULL,
+	"law_number"	INTEGER NOT NULL,
+	"rights_section"	INTEGER,
+	"title"	TEXT NOT NULL,
+	"who_nominated"	TEXT,
+	"who_corrected"	TEXT,
+	"votes_for"	INTEGER NOT NULL,
+	"votes_againist"	INTEGER NOT NULL
+);

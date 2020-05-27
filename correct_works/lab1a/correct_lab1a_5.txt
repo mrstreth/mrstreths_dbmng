@@ -1,0 +1,25 @@
+--- ВАРИАНТ 5 - Страховая компания
+CREATE TABLE "agents_data" (
+	"id"	INTEGER NOT NULL,
+	"name_agent"	TEXT NOT NULL,
+	"birthday_agent"	DATETIME,
+	"experience"	REAL
+);
+CREATE TABLE "policyholders_data" (
+	"id"	INTEGER NOT NULL,
+	"name_policyholder"	TEXT NOT NULL,
+	"birthday_policyholder"	DATETIME,
+	"gender"	TEXT,
+	"nationality"	TEXT,
+	"type_insurance"	TEXT NOT NULL,
+	"date_insurance"	DATETIME NOT NULL,
+	"city_insurance"	TEXT
+);
+CREATE TABLE "cases_data" (
+	"id"	INTEGER NOT NULL,
+	"name_policyholder"	TEXT NOT NULL,
+	"refund_amount"	REAL NOT NULL,
+	"number_policy"	INTEGER NOT NULL,
+	"prize_amount"	REAL NOT NULL,
+	"policyholders_amount"	REAL NOT NULL
+);

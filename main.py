@@ -36,6 +36,9 @@ else:
 if os.path.exists(DATABASE_NAME):
     os.remove(DATABASE_NAME)
 
+if os.path.exists('parameters.txt'):
+    os.remove('parameters.txt')
+
 # выполнение запроса / скрипта
 if WORK_FILE_NAME.endswith('.txt'):
     """если это sql запрос в виде file.txt"""

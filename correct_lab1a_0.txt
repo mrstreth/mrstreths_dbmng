@@ -1,9 +1,0 @@
--- правильная работа lab1a_0
-create table employees (
-	id int not null,
-	name TEXT not null,
-	birthday DATETIME NULL,
-	sex TEXT not NULL,
-	active BOOL default FALSE,
-	salary int not NULL
-);

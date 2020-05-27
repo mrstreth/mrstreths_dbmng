@@ -1,0 +1,10 @@
+-- вариант 0
+-- правильная работа lab1a
+create table employees (
+	id integer not null,
+	name TEXT not null,
+	birthday DATETIME NULL,
+	sex TEXT not NULL,
+	active BOOLEAN default FALSE,
+	salary INTEGER not NULL
+);

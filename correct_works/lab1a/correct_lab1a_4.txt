@@ -1,0 +1,29 @@
+--- ВАРИАНТ 4 - Учет автозапчастей
+CREATE TABLE "details_data" (
+	"id"	INTEGER NOT NULL,
+	"number_detail"	INTEGER NOT NULL,
+	"manufacturer"	TEXT,
+	"name_rus"	TEXT,
+	"name_eng"	TEXT,
+	"weight"	REAL NOT NULL,
+	"type"	TEXT NOT NULL,
+	"price"	REAL NOT NULL,
+	"warehouse"	TEXT NOT NULL,
+	"quantity"	INTEGER NOT NULL
+);
+CREATE TABLE "invoice_data" (
+	"id"	INTEGER NOT NULL,
+	"invoice_number"	INTEGER NOT NULL,
+	"date_sale"	DATETIME NOT NULL,
+	"warehouse_sale"	TEXT NOT NULL,
+	"quantity"	INTEGER NOT NULL
+);
+CREATE TABLE "order_data" (
+	"id"	INTEGER NOT NULL,
+	"order_date"	DATETIME NOT NULL,
+	"order_list"	TEXT NOT NULL,
+	"warehouse_loading"	TEXT,
+	"delivery_date"	DATETIME,
+	"warehouse_delivery"	TEXT,
+	"quantity"	INTEGER NOT NULL
+);

@@ -1,0 +1,25 @@
+--- ВАРИАНТ 1 - Психоневрологический диспансер 
+CREATE TABLE "employee_data" (
+	"id"	INTEGER NOT NULL,
+	"name_employee"	TEXT NOT NULL,
+	"position"	TEXT,
+	"employee_growth"	INTEGER,
+	"employee_weight"	REAL
+);
+CREATE TABLE "patient_data" (
+	"id"	INTEGER NOT NULL,
+	"name_patient"	TEXT NOT NULL,
+	"diagnosis"	TEXT,
+	"patient_growth"	INTEGER,
+	"patient_weight"	REAL
+);
+CREATE TABLE "incident_data" (
+	"id"	INTEGER NOT NULL,
+	"date_incident"	DATETIME NOT NULL,
+	"name_victim"	TEXT NOT NULL,
+	"name_initiator"	INTEGER,
+	"degree_damage"	INTEGER,
+	"damage"	TEXT NOT NULL,
+	"start_sick"	DATETIME,
+	"period_sick"	INTEGER
+);

@@ -30,7 +30,7 @@ WORK = list_name_correct_file[1]
 VARIANT = list_name_correct_file[2].split('.')[0]
 type_file = list_name_correct_file[2].split('.')[1]
 
-# если не существует такой лабораторной  работы
+# если файл не начинается с correct
 if not is_correct_file:
     print('is not correct file')
     raise FileNotFoundError
@@ -42,11 +42,12 @@ if (WORK, type_file) not in LIST_EXISTING_WORK:
 
 # находим нужный нам файл в директории
 list_name_correct_file = list()
-files = os.listdir()
+path = "correct_works/{WORK}/".format(WORK=WORK)
+files = os.listdir(path)
 for file in filter(lambda x: x == name_correct_file, files):
     list_name_correct_file.append(file)
 
-# если не удалось найти
+# если не удалось найти файл
 if list_name_correct_file is []:
     print('Файл не найден!')
     raise FileNotFoundError
@@ -61,9 +62,13 @@ if len(list_name_correct_file) > 1:
 # теперь составляем тест для опеределенной виды работы
 if WORK == 'lab1a':
     # извлекаем sql запрос и выполняем его
-    file = open(name_correct_file, 'r')
-    query = file.read()
-    file.close()
+    try:
+        file = open(path + name_correct_file, 'r')
+        query = file.read()
+        file.close()
+    except:
+        print('файл не найден')
+        raise FileNotFoundError
     try:
         conn = sqlite3.connect(DATABASE_NAME)
         conn.executescript(query)
@@ -107,10 +112,12 @@ if WORK == 'lab1a':
     print('}', file=file, sep='')
     file.close()
 
+#  на доработке!!!!
 elif WORK == 'lab1b':
     # выполняем скрпт
     from peewee import *
-    сommand_import = 'import correct_{}_{}'.format(WORK,VARIANT)
+
+    сommand_import = 'import correct_{}_{}'.format(WORK, VARIANT)
     exec(сommand_import)
     # из созданной БД извлекаем данные (такие же как в lab1a но поменяется наименование типов)
     NAME_TABLE = list()  # имя(имена) таблиц
