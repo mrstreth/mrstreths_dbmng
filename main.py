@@ -59,7 +59,6 @@ if WORK_FILE_NAME.endswith('.txt'):
 
 elif WORK_FILE_NAME.endswith('.py'):
     """если это py скрипт"""
-
     print('это py скрипт')
     IS_SCRIPT = True
 

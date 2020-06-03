@@ -24,6 +24,7 @@ if len(sys.argv) != 2:
     raise AttributeError
 
 name_correct_file = sys.argv[1]
+script_name_without_type = name_correct_file.split('.')[0]
 list_name_correct_file = name_correct_file.split('_')
 is_correct_file = True if list_name_correct_file[0] == 'correct' else False
 WORK = list_name_correct_file[1]
@@ -112,12 +113,11 @@ if WORK == 'lab1a':
     print('}', file=file, sep='')
     file.close()
 
-#  на доработке!!!!
 elif WORK == 'lab1b':
     # выполняем скрпт
     from peewee import *
-
-    сommand_import = 'import correct_{}_{}'.format(WORK, VARIANT)
+    сommand_import = 'import correct_works.{WORK}.{FILE}'.format(\
+                     WORK=WORK, FILE=script_name_without_type)
     exec(сommand_import)
     # из созданной БД извлекаем данные (такие же как в lab1a но поменяется наименование типов)
     NAME_TABLE = list()  # имя(имена) таблиц

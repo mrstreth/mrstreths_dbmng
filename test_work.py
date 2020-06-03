@@ -9,9 +9,15 @@ parameters_file = open(NAME_PARAMETERS_FILE, 'r')
 parameters = dict([line.strip().split('=') for line in parameters_file.readlines()])
 
 сommand_import = \
-    'from variants.variants_{WORK}.variant_{VARIANT} import DATABASE_NAME, NAME_TABLE, COLUMN_TYPE'.format(\
-        WORK=parameters['WORK'], VARIANT=parameters['VARIANT'])
+    'from variants.variants_{WORK}.variant_{VARIANT} import DATABASE_NAME, NAME_TABLE, COLUMN_TYPE'.format( \
+        WORK=parameters['WORK'], VARIANT=parameters['VARIANT'], )
 exec(сommand_import)
+
+if parameters['IS_SCRIPT'] == 'True':
+    from peewee import *
+    сommand_import = 'import {AUTHOR}_{WORK}_{VARIANT}'.format( \
+        AUTHOR=parameters['AUTHOR'], WORK=parameters['WORK'], VARIANT=parameters['VARIANT'])
+    exec(сommand_import)
 
 # тесты для 'lab1a'
 if parameters['WORK'] == 'lab1a':
@@ -85,15 +91,18 @@ if parameters['WORK'] == 'lab1a':
 elif parameters['WORK'] == 'lab1b':
     """Тесты для lab1b"""
 
-    from peewee import *
+    # from peewee import *
+
     db = SqliteDatabase(parameters['DATABASE_NAME'])
     db.connect()
-    for table in NAME_TABLE:
-        сommand_import = 'from {}_lab1b_{} import {}'.format(\
-            parameters['AUTHOR'], parameters['VARIANT'], table)
-        exec(сommand_import)
-        сommand_import = 'db.create_tables([{}])'.format(table)
-        exec(сommand_import)
+
+
+    # for table in NAME_TABLE:
+    #     сommand_import = 'from {}_lab1b_{} import {}'.format(\
+    #         parameters['AUTHOR'], parameters['VARIANT'], table)
+    #     exec(сommand_import)
+    #     сommand_import = 'db.create_tables([{}])'.format(table)
+    #     exec(сommand_import)
 
     def test_existDB():
         """удалось ли создать БД"""
